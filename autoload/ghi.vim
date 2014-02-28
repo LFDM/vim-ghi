@@ -37,3 +37,24 @@ function! ghi#load_additional_highlighting()
   hi def link ghi_cross_commit       ghi_commit
 endfunction
 
+function! ghi#create_diff_mappings()
+  nnoremap <silent> <Plug>GhiNextCommentSection :<c-u>call <SID>find_comment_section('')<cr>
+  nnoremap <silent> <Plug>GhiPrevCommentSection :<c-u>call <SID>find_comment_section('b')<cr>
+  nnoremap <silent> <Plug>GhiNextHunk :<c-u>call search('^@@ .* @@', 'W')<cr>
+  nnoremap <silent> <Plug>GhiPrevHunk :<c-u>call search('^@@ .* @@', 'bW')<cr>
+
+  nmap <buffer> [n <Plug>GhiPrevHunk
+  nmap <buffer> ]n <Plug>GhiNextHunk
+  nmap <buffer> [c <Plug>GhiPrevCommentSection
+  nmap <buffer> ]c <Plug>GhiNextCommentSection
+endfunction
+
+function! s:find_comment_section(direction)
+  let pattern = '^#|#'
+  if getline('.') =~# pattern
+    call search('\v^(#\|#)@!', a:direction.'W')
+    call search(pattern, a:direction.'W')
+  else
+    call search(pattern, a:direction.'W')
+  endif
+endfunction
