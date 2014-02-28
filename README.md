@@ -5,7 +5,7 @@ Filetype detection with syntax highlighting for https://github.com/stephencelis/
 
 #### Mappings
 
-Navigate diffs with each (`ghi pull diff`):
+Navigate diffs with ease (`ghi pull diff`):
 
 | Mapping | Movement|
 |:-------:|:-------:|
