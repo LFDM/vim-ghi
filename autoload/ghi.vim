@@ -11,6 +11,9 @@ function! ghi#load_additional_highlighting()
 
   syn match ghi_ignore '^#|#.*'
 
+  syn match ghi_user '@\w\+\>-\@!'
+  syn match ghi_reference '#\d\+\>'
+
 
   hi ghi_title term=bold cterm=bold gui=bold
 
@@ -23,5 +26,8 @@ function! ghi#load_additional_highlighting()
 
   hi def link ghi_head               Function
   hi def link ghi_base               Function
+
+  hi def link ghi_user               ghi_title
+  hi def link ghi_reference          SpecialKey
 endfunction
 
