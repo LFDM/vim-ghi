@@ -11,7 +11,7 @@ function! ghi#load_additional_highlighting()
 
   syn match ghi_ignore '^#|#.*'
 
-  syn match ghi_user             '\v(\s|\n)\@\w+>-@!'
+  syn match ghi_user             '\v(\s|^)\@\w+>-@!'
   syn match ghi_reference        '\v#\d+>'
   syn match ghi_cross_reference  '\v<\w+/\w+#\d+>'
   syn match ghi_commit           '\v<[a-f0-9]{40}>'
